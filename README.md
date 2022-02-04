@@ -12,3 +12,5 @@
 
 **github commands**
     1) in terminal git add -A
+    2) in your terminal enter git commit -m "description in quote"
+    3) in terminal enter git push
