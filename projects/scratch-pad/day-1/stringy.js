@@ -87,7 +87,9 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    if (string.charAt(0) == char) {
+        return true;
+    } else { return false;}
 
     // YOUR CODE ABOVE HERE //
 }
@@ -106,9 +108,9 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-if (string.length - 1 == char.length - 1) {
-    return true
-} else { return false};
+    if (string.charAt(string.length - 1) == char){
+        return true;
+    } else {return false; }
 
 
     // YOUR CODE ABOVE HERE //
@@ -121,6 +123,7 @@ if (string.length - 1 == char.length - 1) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    return stringOne.concat(stringTwo);
 
 
 
@@ -140,6 +143,7 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    return args.join("");
 
 
     // YOUR CODE ABOVE HERE //
@@ -156,9 +160,12 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    if (stringOne.length > stringTwo.length){
+        return stringOne;}
+    else if (stringTwo.length > stringOne.length){
+        return stringTwo
+    }     
+        
     // YOUR CODE ABOVE HERE //
 }
 
