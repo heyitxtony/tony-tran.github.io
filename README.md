@@ -8,7 +8,8 @@
     5) terminal enter sudo apt-get install subversion
     6) in therminal enter npm install -g opspark
     7) in your terminal enter os install
-
+** to test**
+    use os test
 
 **github commands**
     1) in terminal git add -A

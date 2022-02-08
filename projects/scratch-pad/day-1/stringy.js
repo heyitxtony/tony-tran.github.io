@@ -14,7 +14,9 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
+    //return the length of the input string using the .length property
+    return string.length;
+  length("Alex"); // => 4  
 
 
     // YOUR CODE ABOVE HERE //
@@ -25,7 +27,9 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
+    //returns string in lowercase using toLowerCase()
+    return string.toLowerCase();
+    toLowerCase("TONY"); // => tony
 
 
     // YOUR CODE ABOVE HERE //
@@ -36,7 +40,9 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
+    // return string with Uppercase
+    return string.toUpperCase();
+    toUpperCase("pineapple"); // => PINEAPPLE
 
 
     // YOUR CODE ABOVE HERE //
@@ -57,11 +63,15 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
-
+    // converts string to dashcase
+    return string.replace(/[" "]/g,"-").toLowerCase();
+ 
+    toDashCase('Hello World');
 
     // YOUR CODE ABOVE HERE //
 }
+
+
 
 /**
  * Given an input String and a single character, return true if the String
@@ -78,7 +88,6 @@ function toDashCase(string) {
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
 
-    
 
     // YOUR CODE ABOVE HERE //
 }
@@ -97,7 +106,9 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+if (string.length - 1 == char.length - 1) {
+    return true
+} else { return false};
 
 
     // YOUR CODE ABOVE HERE //
