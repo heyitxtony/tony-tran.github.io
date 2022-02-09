@@ -12,8 +12,11 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
+ 
+  for (var i = 0; i < array.length - 1; i++){
+    console.log(i);
+  }
+  printArrayValues(["taco", "tuesday"]);
   
   
   // YOUR CODE ABOVE HERE //
@@ -28,7 +31,6 @@ function printArrayValuesInReverse(array) {
   
   
   
-  
   // YOUR CODE ABOVE HERE //
 }
 
@@ -37,6 +39,9 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
+  for (var key in object){
+    return key.object;
+  }
   
   
   
