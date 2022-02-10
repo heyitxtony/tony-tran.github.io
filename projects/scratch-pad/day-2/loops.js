@@ -12,15 +12,13 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
+  var arr = [];
  
-  for (var i = 0; i < array.length - 1; i++){
-    console.log(i);
+  for (var i = 0; i < array.length; i++){
+    console.log(arr.push(arr[i]));
   }
-  printArrayValues(["taco", "tuesday"]);
+ 
   
-  
-  // YOUR CODE ABOVE HERE //
-}
 
 /** 
  * Given an input Array, loop backwards over the Array and print its values 
@@ -128,4 +126,4 @@ if((typeof process !== 'undefined') &&
     module.exports.printObjectKeys = printObjectKeys;
     module.exports.getObjectLength = getObjectLength;
     module.exports.printObjectValuesInReverse = printObjectValuesInReverse;
-}
+}}
