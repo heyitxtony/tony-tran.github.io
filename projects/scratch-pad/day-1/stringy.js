@@ -113,7 +113,6 @@ function endsWith(string, char) {
         return true;
     } else {return false; }
 
-
     // YOUR CODE ABOVE HERE //
 }
 
