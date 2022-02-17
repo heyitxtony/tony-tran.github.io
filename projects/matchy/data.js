@@ -73,7 +73,7 @@ var goat = {
   species: 'goat', name: 'Al', noises: ['stomp', 'bla', 'sneeze', 'woosh'] 
 };
 var cat = { 
-  species: 'cat', name: 'Jerry', noises: ['hiss', 'meow', 'scratch', 'pounce'], friends: [3] 
+  species: 'cat', name: 'Jerry', noises: ['hiss', 'meow', 'scratch', 'pounce'], friends: [getRandom(animals)],
 };
 animals.push(duck);
 animals.push(goat);
