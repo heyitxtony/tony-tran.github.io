@@ -14,4 +14,10 @@
 **github commands**
     1) in terminal git add -A
     2) in your terminal enter git commit -m "description in quote"
-    3) in terminal enter git push
+    3) in terminal enter git pushg
+
+**search for lodown repo**
+1)open file
+2) search for /workspace/
+3) select lodown
+4) index.js

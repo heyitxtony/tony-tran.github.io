@@ -2,8 +2,9 @@
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function objectValues(object) {
+function objectValues(obj) {
 
+    return Object.values(obj);
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +12,7 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+ return Object.keys(object).join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +20,7 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    return Object.values(object).join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +28,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if (Array.isArray(collection) === true){
+        return "array";
+    } else if (typeof collection === "object"){
+        return "object";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,6 +40,7 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
+    return string[0].toUpperCase() + string.substring(1);
     
 }
 
@@ -43,6 +49,11 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
+    let split = string.split(" ");
+    for (var i  = 0; i < split.length; i++){
+        split[i] = split[i][0].toUpperCase() + split[i].substr(1);
+    }
+    return split.join(" ");
     
 }
 
@@ -51,6 +62,9 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+    
+    
+    return "Welcome " + object.name.charAt(0).toUpperCase() + object.name.slice(1) + "!";
 
 }
 
@@ -59,6 +73,14 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
+    if (object["name"] && object["species"]){
+        var stringName = object["name"];
+        var stringSpecies = object["species"];
+        stringName = stringName[0].toUpperCase() + stringName.substring(1);
+        stringSpecies = stringSpecies[0].toUpperCase() + stringSpecies.substring(1);
+        var message = stringName + " is a " +stringSpecies;
+        return message;
+    }
 
 }
 

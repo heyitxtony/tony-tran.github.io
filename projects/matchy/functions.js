@@ -12,10 +12,10 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function search(animals, animalName){
-    for (var i = 0; i < animals.length; i++){
-      if (aniamls.name === animal[i]){
-        return true;
+function search([animals], animal){
+    for (var key in animals){
+      if (animals.name === animal){
+        return animals.name;
       } else {return null;
     }
   }}
@@ -29,13 +29,24 @@ function search(animals, animalName){
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function remove(animals, name) {
+  for (var i = 0; i < animals.length; i++) {
+    if (animals[i].name === name){ animals.splice(i, 1);}
+  }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function add(animals, animal){
+  var names = [];
+  for (var i = 0; i < animals.length; i++){
+    names.push(animals[i].name);
+  }
+  if (names.includes(animal.name) === false && animal.name.length > 0 && animal.species.length > 0) {
+    animals.push(animal);
+  }}
 
 
 /**
