@@ -20,9 +20,8 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-_.identity = function(){
+_.identity = function(value){
     return value;
-
 
 };
 
@@ -46,7 +45,18 @@ _.identity = function(){
 * _.typeOf([1,2,3]) -> "array"
 */
 _.typeOf = function(value){
-
+    if (typeof value !== "object"){
+        return typeof value;
+    } else if (typeof value === null) {
+        return "null";
+    } else if (typeof value === value){
+        return typeof value;
+    } else if (Array.isArray(value) === true) {
+        return "array"
+    } else if (value instanceof Date){
+        return "date"
+    } else { return "object"}
+    
 }
 
 /** _.first
@@ -66,7 +76,17 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+_.first = function(array, number){
+    const x = [];
+    if (Array.isArray(array) === false) {
+        return x;
+    } else if (typeof number !== number) {
+        return array[0];
+    } else if (typeof number === number){
+      else { return array.length};  
+    }
 
+}
 
 /** _.last
 * Arguments:
@@ -135,8 +155,7 @@ _.typeOf = function(value){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-_.each = function (collection, action){
-    function each(collection, action) {
+_.each =  function each(collection, action) {
         if(Array.isArray(collection)) {
             for(var i = 0; i < collection.length; i++) {
                 action(collection[i], i, collection);
@@ -148,7 +167,7 @@ _.each = function (collection, action){
         }
     }
 
-}
+
 
 
 /** _.unique
