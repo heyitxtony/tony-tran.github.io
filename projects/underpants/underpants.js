@@ -47,14 +47,14 @@ _.identity = function(value){
 _.typeOf = function(value){
     if (typeof value !== "object"){
         return typeof value;
-    } else if (typeof value === null) {
-        return "null";
     } else if (typeof value === value){
         return typeof value;
     } else if (Array.isArray(value) === true) {
-        return "array"
+        return "array";
+    } else if (value === null ) {
+        return "null";
     } else if (value instanceof Date){
-        return "date"
+        return "date";
     } else { return "object"}
     
 }
@@ -76,17 +76,41 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+/*
 _.first = function(array, number){
-    const x = [];
+    const x = []; 
     if (Array.isArray(array) === false) {
         return x;
-    } else if (typeof number !== number) {
+    } else if (number === typeof number) {
+        return array[0]; }
+        else if(array.length < number){
         return array[0];
-    } else if (typeof number === number){
-      else { return array.length};  
-    }
+        } else { return array;
+          
+
+        }
 
 }
+*/
+//Ashs
+_.first = function (array, number) {
+    
+    //If <array> is not an array, return []
+    if (Array.isArray(array) === false) {
+        return array;
+    }
+    //If <number> is not given or not a number, return just the first element in <array>
+    if (typeof number !== "number") {
+        return array[0];
+    } else {
+        return array.slice(0,2);
+    }
+}
+
+
+
+
+
 
 /** _.last
 * Arguments:
@@ -122,7 +146,19 @@ _.first = function(array, number){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+/*FIXX
+_.indexOf = fucntion(array, value){
+    // iterate through the input array using a for loop
+    for (var i = 0; i < array.length; i++){
+        //determine if the current array value is equal to the input value
+        if (array[i] === value){
+            return i;
+        }
+    }
+    return -1
+};
 
+*/
 
 /** _.contains
 * Arguments:
@@ -155,6 +191,10 @@ _.first = function(array, number){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
+
+
+ 
 _.each =  function each(collection, action) {
         if(Array.isArray(collection)) {
             for(var i = 0; i < collection.length; i++) {
@@ -234,7 +274,7 @@ _.each =  function each(collection, action) {
 
 /** _.map
 * Arguments:
-*   1) A collection
+*   1) A collection (array of values or key value pairs)
 *   2) a function
 * Objectives:
 *   1) call <function> for each element in <collection> passing the arguments:
@@ -247,6 +287,29 @@ _.each =  function each(collection, action) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+
+_.map = function(collection, func){
+    //create output array
+    var mapped = [];
+    //determine if the input collection is an array
+    if (Array.isArray(collection)) {
+        // iterate through the array using a for loop
+        for (var i = 0; i < collection.length; i++){
+            //invoke the input function on the current element of the array, the current index, and the array
+            
+            mapped.push(func(collection[i], i, collection));
+        }
+
+    } else {
+    //else the input collection is an object
+    // iterate through the object using a for in loop
+    for (let key in collection) {
+        let result = func(collection[key], key, collection);
+        mapped.push(result);
+    }
+    }
+    return mapped;
+};
 
 
 /** _.pluck
