@@ -76,41 +76,23 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-/*
-_.first = function(array, number){
-    const x = []; 
-    if (Array.isArray(array) === false) {
-        return x;
-    } else if (number === typeof number) {
-        return array[0]; }
-        else if(array.length < number){
-        return array[0];
-        } else { return array;
-          
 
-        }
-
-}
-*/
-//Ashs
 _.first = function (array, number) {
     
     //If <array> is not an array, return []
     if (Array.isArray(array) === false) {
-        return array;
-    }
-    //If <number> is not given or not a number, return just the first element in <array>
-    if (typeof number !== "number") {
+        return [];
+    } else if (number < 0) {  //determine if number is negative
+        return [];
+    } else if (number === undefined) { //determine if the input number has not been passed in
+        //return first value of the array
         return array[0];
-    } else {
-        return array.slice(0,2);
+    } else if ( number > array.length) {
+        return array;
+    } else { //else we have regular inputs
+        return array.slice(0, number);
     }
 }
-
-
-
-
-
 
 /** _.last
 * Arguments:
@@ -129,7 +111,22 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last =  function (array, number) {
+    
+    //If <array> is not an array, return []
+    if (Array.isArray(array) === false) {
+        return [];
+    } else if (number < 0) {  //determine if number is negative
+        return [];
+    } else if (number === undefined) { //determine if the input number has not been passed in
+        //return first value of the array
+        return array[array.length - 1];
+    } else if ( number > array.length) {
+        return array;
+    } else { //else we have regular inputs
+        return array.slice(1, number[array.length - 1]);
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -146,19 +143,18 @@ _.first = function (array, number) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-/*FIXX
-_.indexOf = fucntion(array, value){
-    // iterate through the input array using a for loop
-    for (var i = 0; i < array.length; i++){
-        //determine if the current array value is equal to the input value
-        if (array[i] === value){
+
+_.indexOf = function(array, value) {
+    //iterate through the input array using a for loop
+    for (var i = 0; i < array.length; i++) {
+        //determine if the current aray value is equal to the input value
+        if(array[i] === value) { //iterate through array2, array[2] ==="c"//"c" === "c"
             return i;
         }
     }
-    return -1
-};
+    return -1;
+}
 
-*/
 
 /** _.contains
 * Arguments:
@@ -175,6 +171,13 @@ _.indexOf = fucntion(array, value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function (array, value){
+    if (array.includes(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /** _.each
 * Arguments:
@@ -219,6 +222,16 @@ _.each =  function each(collection, action) {
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+
+_.unique = function unique(array){
+    let uni = [];
+    for (let i = 0; i < array.length; i++){
+        if (uni.indexOf(array[i]) === -1) {
+           uni.push(array[i]);
+        }
+    }
+    return uni; 
+}
 
 
 /** _.filter
@@ -323,6 +336,13 @@ _.map = function(collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, property) {
+    let plucked = [];
+    for (var i = 0; i < array.length; i++){
+        array.map(property(i));
+    } return plucked
+}
+
 
 /** _.every
 * Arguments:
@@ -343,7 +363,51 @@ _.map = function(collection, func){
 * Examples:
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
+    _.every({ a:2, b:4, c:6}), function(e){return e % 2 === 0}) -> true
 */
+
+_.every = function(collection, func){
+    /*
+    let collection = [1, 2, 3, 4];
+    let func;
+    */
+    //determine if func is undefined
+    if(func === undefined){
+        // determine if the input collection is an array
+        if(Array.isArray(collection)){
+            //iterate through collection
+            for (let i = 0; i <collection.length; i++) {
+                if (!collection[i]) { //if the current value in the array is falsey
+                    return false;
+                }
+            }
+        } else { // else it's not an array
+            // iterating through collection as an object
+            for (let key in collection){
+                if (!collection[key]){
+                    if (!collection[key]) {
+                        return false;
+                    }
+                }
+            }
+        }
+    } else { // else it is defined ( meaning it's been passed in as an argument)
+        // determine if collection is an array
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) { // pass current value, current index, aand collection into func as args
+                if (func(collection[i], i, collection) === false) {
+                    return false;
+            }
+        }
+    }
+    } return true
+};
+    //else its not an array
+        //iterate through collection using a for in loop
+
+
+_.every([1, 2, 3, 4]);
+
 
 
 /** _.some
@@ -402,6 +466,10 @@ _.map = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(...inputs) {
+    // console.log(inputs)
+
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
